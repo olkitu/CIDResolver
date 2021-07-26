@@ -25,7 +25,7 @@ export interface CellidToENBConverterResult {
 })
 
 export class AppComponent {
-  title = 'Cell ID Converter';
+  title = 'CIDResolver';
 
   faGithub = faGithub;
   
