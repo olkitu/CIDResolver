@@ -1,0 +1,17 @@
+# The Docker image to run your workspace in.
+image: gitpod/workspace-full
+
+# Command to start on workspace startup
+tasks:
+  - init: |
+      export NG_CLI_ANALYTICS=off
+      npm install -g @angular/cli
+      yarn
+    command: ng serve
+# Ports to expose on workspace startup
+ports:
+  - port: 4200
+    onOpen: open-preview
+vscode:
+  extensions:
+    - angular.ng-template

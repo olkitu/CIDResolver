@@ -1,0 +1,86 @@
+<mat-toolbar color="primary">
+    <span>CIDResolver</span>
+  </mat-toolbar>
+<div class="container">
+    <p>Use this page convert things such as eNB ID/RNC-ID/BSIC or hex values of IDs. Simply select network type and type in the LCID/CID.</p>
+    <form method="POST" #cellidForm="ngForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Network type</mat-label>
+            <mat-select [(value)]="formData.net" (selectionChange)="submitForm()">
+                <mat-option value="LTE">4G LTE</mat-option>
+                <mat-option value="UMTS">3G UMTS</mat-option>
+                <mat-option value="GSM">2G GSM</mat-option>
+            </mat-select>
+        </mat-form-field><br />
+        <mat-form-field appearance="fill">
+            <mat-label>Cell ID</mat-label>
+            <input matInput type="number" id="cellid" name="cellid" [(ngModel)]="formData.cellid" (ngModelChange)="submitForm()" required />
+            <mat-hint>Cell ID should be at least 3 digit long</mat-hint>
+        </mat-form-field><br />
+    </form>
+    <br /> <br />
+    <div>
+        <table class="mat-table" *ngIf="cellidToENBConverterResult != null">
+            <tr *ngIf="formData.net != null">
+                <th class="mat-header-cell"> Network Type</th>
+                <td>
+                    {{cellidToENBConverterResult.net}}
+                </td>
+            </tr>
+            <tr *ngIf="cellidToENBConverterResult.cellid != null">
+                <th class="mat-header-cell"> Cell Identify</th>
+                <td class="mat-cell">
+                    {{cellidToENBConverterResult.cellid}}
+                </td>
+            </tr>
+            <tr *ngIf="cellidToENBConverterResult.cellidhex != null">
+                <th class="mat-header-cell">
+                    Cell Identify (hex)
+                </th>
+                <td class="mat-cell">
+                    {{cellidToENBConverterResult.cellidhex}}
+                </td>
+            </tr>
+            <tr *ngIf="cellidToENBConverterResult.siteid != null">
+                <th class="mat-header-cell">
+                    <ng-container *ngIf="cellidToENBConverterResult.net == 'LTE'">eNB ID</ng-container>
+                    <ng-container *ngIf="cellidToENBConverterResult.net == 'UMTS'">NB ID</ng-container>
+                    <ng-container *ngIf="cellidToENBConverterResult.net == 'GSM'">BTS ID</ng-container>
+                </th>
+                <td>
+                    {{cellidToENBConverterResult.siteid}}
+                </td>
+            </tr>
+            <tr *ngIf="cellidToENBConverterResult.siteidhex != null">
+                <th class="mat-header-cell">
+                    <ng-container *ngIf="cellidToENBConverterResult.net == 'LTE'">eNB ID (hex)</ng-container>
+                    <ng-container *ngIf="cellidToENBConverterResult.net == 'UMTS'">NB ID (hex)</ng-container>
+                    <ng-container *ngIf="cellidToENBConverterResult.net == 'GSM'">BTS ID (hex)</ng-container>
+                </th>
+                <td class="mat-cell">
+                    {{cellidToENBConverterResult.siteidhex}}
+                </td>
+            </tr>
+            <tr *ngIf="cellidToENBConverterResult.sectorid != null && cellidToENBConverterResult.net == 'LTE'">
+                <th class="mat-header-cell">
+                    Sector ID
+                </th>
+                <td class="mat-cell">
+                    {{cellidToENBConverterResult.sectorid}}
+                </td>
+            </tr>
+            <tr *ngIf="cellidToENBConverterResult.sectoridhex != null && cellidToENBConverterResult.net == 'LTE'">
+                <th class="mat-header-cell">
+                    Sector ID (Hex)
+                </th>
+                <td class="mat-cell">
+                    {{cellidToENBConverterResult.sectoridhex}}
+                </td>
+            </tr>
+            <tr *ngIf="cellidToENBConverterResult.rncid != null && cellidToENBConverterResult.net == 'UMTS'">
+                <th class="mat-header-cell"> RNC-ID</th>
+                <td class="mat-cell">{{cellidToENBConverterResult.rncid}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
