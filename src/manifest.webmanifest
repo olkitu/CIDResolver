@@ -1,8 +1,8 @@
 {
-  "name": "cellid-to-enbid",
-  "short_name": "cellid-to-enbid",
+  "name": "CIDResolver",
+  "short_name": "CIDResolver",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background_color": "#1976d2",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
