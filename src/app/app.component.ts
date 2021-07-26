@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export interface CellidToENBConverter {
   net: 'LTE'| 'UMTS' | 'GSM';
@@ -26,7 +27,8 @@ export interface CellidToENBConverterResult {
 export class AppComponent {
   title = 'Cell ID Converter';
 
-
+  faGithub = faGithub;
+  
   submitDisabled: boolean = false;
   formData: CellidToENBConverter = { net: 'LTE', cellid: null};
   cellid: string = "";
