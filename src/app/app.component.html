@@ -22,10 +22,10 @@
     </form>
     <br /> <br />
     <div>
-        <table class="mat-table" *ngIf="cellidToENBConverterResult != null">
+        <table class="mat-table mat-elevation-z8" *ngIf="cellidToENBConverterResult != null">
             <tr *ngIf="formData.net != null">
                 <th class="mat-header-cell"> Network Type</th>
-                <td>
+                <td class="mat-cell">
                     {{cellidToENBConverterResult.net}}
                 </td>
             </tr>
@@ -49,7 +49,7 @@
                     <ng-container *ngIf="cellidToENBConverterResult.net == 'UMTS'">NB ID</ng-container>
                     <ng-container *ngIf="cellidToENBConverterResult.net == 'GSM'">BTS ID</ng-container>
                 </th>
-                <td>
+                <td class="mat-cell">
                     {{cellidToENBConverterResult.siteid}}
                 </td>
             </tr>
