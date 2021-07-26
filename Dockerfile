@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
 RUN yarn
 COPY . .
-RUN ./node_modules/@angular/cli/bin/ng build --configuration production--aot --subresource-integrity --outputHashing=all --prod=true
+RUN ./node_modules/@angular/cli/bin/ng build --configuration production
 
 FROM nginx:stable-alpine
 WORKDIR /var/www/html
