@@ -3,7 +3,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export interface CellidToENBConverter {
   net: 'LTE'| 'UMTS' | 'GSM';
-  cellid: number | null;
+  cellid: string | null;
 }
 
 export interface CellidToENBConverterResult {
@@ -31,7 +31,6 @@ export class AppComponent {
   
   submitDisabled: boolean = false;
   formData: CellidToENBConverter = { net: 'LTE', cellid: null};
-  cellid: string = "";
 
   cellidToENBConverterResult: CellidToENBConverterResult | undefined;
 
@@ -40,28 +39,30 @@ export class AppComponent {
 
     if(this.formData.cellid == null)
       return;
-    
-    let siteid = this.formData.cellid / 10 ^ 0;
+
+    let cell_id = Number(this.formData.cellid);
+
+    let siteid = cell_id / 10 ^ 0;
     let sectorid = undefined;
     let sectoridhex = undefined;
     let rncid = undefined;
     
     if(this.formData.net == 'LTE') {
-      sectorid = this.formData.cellid & 0xff;
-      siteid = this.formData.cellid >> 8
+      sectorid = cell_id & 0xff;
+      siteid = cell_id >> 8
       sectoridhex = sectorid.toString(16);
     }
 
     if(this.formData.net == 'UMTS') {
-      rncid = this.formData.cellid >> 16;
+      rncid = cell_id >> 16;
     }
 
-    let cellidhex = this.formData.cellid.toString(16);
+    let cellidhex = cell_id.toString(16);
     let siteidhex = siteid.toString(16);
 
     this.cellidToENBConverterResult = {
       net: this.formData.net,
-      cellid: this.formData.cellid,
+      cellid: cell_id,
       cellidhex: cellidhex,
       sectorid: sectorid,
       siteid: siteid,
