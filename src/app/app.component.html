@@ -16,9 +16,9 @@
         </mat-form-field><br />
         <mat-form-field appearance="fill">
             <mat-label>Cell ID</mat-label>
-            <input matInput type="number" id="cellid" name="cellid" [(ngModel)]="formData.cellid" (ngModelChange)="submitForm()" autocomplete="off" required />
-            <mat-hint>Cell ID should be at least 3 digit long</mat-hint>
-        </mat-form-field><br />
+            <input matInput type="text" id="cellid" name="cellid" [(ngModel)]="formData.cellid" (ngModelChange)="submitForm()" autocomplete="off" required />
+            <mat-hint>Accepted decimal or hexdecimal value. Min 3 digits long.</mat-hint>
+        </mat-form-field><br /><br />
     </form>
     <br /> <br />
     <div>
