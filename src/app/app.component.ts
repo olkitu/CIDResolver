@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 
 export interface CellidToENBConverter {
   net: 'LTE'| 'UMTS' | 'GSM';
@@ -28,6 +29,7 @@ export class AppComponent {
   title = 'CIDResolver';
 
   faGithub = faGithub;
+  faLanguage = faLanguage;
   
   submitDisabled: boolean = false;
   formData: CellidToENBConverter = { net: 'LTE', cellid: null};
