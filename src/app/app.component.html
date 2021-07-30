@@ -1,13 +1,18 @@
 <mat-toolbar color="primary">
     <span>CIDResolver</span>
     <span class="spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu"><fa-icon [icon]="faLanguage" [styles]="{'stroke': 'white', 'color': 'white'}"></fa-icon></button>
+    <mat-menu #menu="matMenu">
+        <a href="/en" mat-menu-item>English</a>
+        <a href="/fi" mat-menu-item>Finnish</a>
+    </mat-menu>
     <a target="_blank" rel="noopener" href="https://github.com/olkitu/CIDResolver"><fa-icon [icon]="faGithub" [styles]="{'stroke': 'white', 'color': 'white'}"></fa-icon></a>
   </mat-toolbar>
 <div class="container">
-    <p>Use this page convert Cell ID to BTS/NB/eNB ID/RNC-ID/BSIC or hex values of IDs. Simply select network type and type in the LCID/CID.</p>
+    <p i18n>Use this page convert Cell ID to BTS/NB/eNB ID/RNC-ID/BSIC or hex values of IDs. Simply select network type and type in the LCID/CID.</p>
     <form method="POST" #cellidForm="ngForm">
         <mat-form-field appearance="fill">
-            <mat-label>Network type</mat-label>
+            <mat-label i18n>Network type</mat-label>
             <mat-select [(value)]="formData.net" (selectionChange)="submitForm()">
                 <mat-option value="LTE">4G LTE</mat-option>
                 <mat-option value="UMTS">3G UMTS</mat-option>
@@ -15,28 +20,28 @@
             </mat-select>
         </mat-form-field><br />
         <mat-form-field appearance="fill">
-            <mat-label>Cell ID</mat-label>
+            <mat-label i18n>Cell ID</mat-label>
             <input matInput type="text" id="cellid" name="cellid" [(ngModel)]="formData.cellid" (ngModelChange)="submitForm()" autocomplete="off" required />
-            <mat-hint>Min 3 digits long decimal or hexdecimal value</mat-hint>
+            <mat-hint i18n>Min 3 digits long decimal or hexdecimal value</mat-hint>
         </mat-form-field><br /><br />
     </form>
     <br /> <br />
     <div>
         <table class="mat-table mat-elevation-z8" *ngIf="cellidToENBConverterResult != null">
             <tr *ngIf="formData.net != null">
-                <th class="mat-header-cell"> Network Type</th>
+                <th class="mat-header-cell" i18n> Network Type</th>
                 <td class="mat-cell">
                     {{cellidToENBConverterResult.net}}
                 </td>
             </tr>
             <tr *ngIf="cellidToENBConverterResult.cellid != null">
-                <th class="mat-header-cell"> Cell Identify</th>
+                <th class="mat-header-cell" i18n> Cell Identify</th>
                 <td class="mat-cell">
                     {{cellidToENBConverterResult.cellid}}
                 </td>
             </tr>
             <tr *ngIf="cellidToENBConverterResult.cellidhex != null">
-                <th class="mat-header-cell">
+                <th class="mat-header-cell" i18n>
                     Cell Identify (hex)
                 </th>
                 <td class="mat-cell">
@@ -64,7 +69,7 @@
                 </td>
             </tr>
             <tr *ngIf="cellidToENBConverterResult.sectorid != null && cellidToENBConverterResult.net == 'LTE'">
-                <th class="mat-header-cell">
+                <th class="mat-header-cell" i18n>
                     Sector ID
                 </th>
                 <td class="mat-cell">
@@ -72,7 +77,7 @@
                 </td>
             </tr>
             <tr *ngIf="cellidToENBConverterResult.sectoridhex != null && cellidToENBConverterResult.net == 'LTE'">
-                <th class="mat-header-cell">
+                <th class="mat-header-cell" i18n>
                     Sector ID (Hex)
                 </th>
                 <td class="mat-cell">

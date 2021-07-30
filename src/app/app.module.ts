@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule} from '@angular/material/menu';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment'
@@ -35,6 +37,7 @@ import { environment } from '../environments/environment'
     MatRadioModule,
     MatFormFieldModule,
     MatIconModule,
+    MatMenuModule,
     HttpClientModule,
     FontAwesomeModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
