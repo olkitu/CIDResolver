@@ -1,12 +1,12 @@
 <mat-toolbar color="primary">
     <span>CIDResolver</span>
     <span class="spacer"></span>
-    <a target="_blank" rel="noopener" href="https://github.com/olkitu/CIDResolver"><fa-icon [icon]="faGithub" [styles]="{'stroke': 'white', 'color': 'white'}"></fa-icon></a>
     <button mat-button [matMenuTriggerFor]="menu"><fa-icon [icon]="faLanguage" [styles]="{'stroke': 'white', 'color': 'white'}"></fa-icon></button>
     <mat-menu #menu="matMenu">
         <a href="/en" mat-menu-item>English</a>
         <a href="/fi" mat-menu-item>Finnish</a>
-      </mat-menu>
+    </mat-menu>
+    <a target="_blank" rel="noopener" href="https://github.com/olkitu/CIDResolver"><fa-icon [icon]="faGithub" [styles]="{'stroke': 'white', 'color': 'white'}"></fa-icon></a>
   </mat-toolbar>
 <div class="container">
     <p i18n>Use this page convert Cell ID to BTS/NB/eNB ID/RNC-ID/BSIC or hex values of IDs. Simply select network type and type in the LCID/CID.</p>
