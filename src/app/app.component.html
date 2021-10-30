@@ -4,14 +4,31 @@
     <a target="_blank" rel="noopener" href="https://github.com/olkitu/CIDResolver"><fa-icon [icon]="faGithub" [styles]="{'stroke': 'white', 'color': 'white'}"></fa-icon></a>
   </mat-toolbar>
 <div class="container">
-    <p>Use this page convert Cell ID to BTS/NB/eNB ID/RNC-ID/BSIC or hex values of IDs. Simply select network type and type in the LCID/CID.</p>
+    <p>Use this page convert Cell ID to BTS/NB/eNB/gNB ID/RNC-ID/BSIC or hex values of IDs. Simply select network type and type in the LCID/CID. For NR you have to also select correct gNB ID length value.</p>
     <form method="POST" #cellidForm="ngForm">
         <mat-form-field appearance="fill">
             <mat-label>Network type</mat-label>
             <mat-select [(value)]="formData.net" (selectionChange)="submitForm()">
+                <mat-option value="NR">5G NR</mat-option>
                 <mat-option value="LTE">4G LTE</mat-option>
                 <mat-option value="UMTS">3G UMTS</mat-option>
                 <mat-option value="GSM">2G GSM</mat-option>
+            </mat-select>
+        </mat-form-field><br />
+        <mat-form-field appearance="fill" *ngIf="formData.net == 'NR'">
+            <mat-label>gNB ID Length</mat-label>
+            <mat-select [(value)]="formData.nr_gnbid_length" (selectionChange)="submitForm()">
+                <mat-option value="22">22 bits + 14 bits</mat-option>
+                <mat-option value="23">23 bits + 13 bits</mat-option>
+                <mat-option value="24">24 bits + 12 bits</mat-option>
+                <mat-option value="25">25 bits + 11 bits</mat-option>
+                <mat-option value="26">26 bits + 10 bits</mat-option>
+                <mat-option value="27">27 bits + 9 bits</mat-option>
+                <mat-option value="28">28 bits + 8 bits</mat-option>
+                <mat-option value="29">29 bits + 7 bits</mat-option>
+                <mat-option value="30">30 bits + 6 bits</mat-option>
+                <mat-option value="31">31 bits + 5 bits</mat-option>
+                <mat-option value="32">32 bits + 4 bits</mat-option>
             </mat-select>
         </mat-form-field><br />
         <mat-form-field appearance="fill">
@@ -45,6 +62,7 @@
             </tr>
             <tr *ngIf="cellidToENBConverterResult.siteid != null">
                 <th class="mat-header-cell">
+                    <ng-container *ngIf="cellidToENBConverterResult.net == 'NR'">gNB ID</ng-container>
                     <ng-container *ngIf="cellidToENBConverterResult.net == 'LTE'">eNB ID</ng-container>
                     <ng-container *ngIf="cellidToENBConverterResult.net == 'UMTS'">NB ID</ng-container>
                     <ng-container *ngIf="cellidToENBConverterResult.net == 'GSM'">BTS ID</ng-container>
@@ -55,6 +73,7 @@
             </tr>
             <tr *ngIf="cellidToENBConverterResult.siteidhex != null">
                 <th class="mat-header-cell">
+                    <ng-container *ngIf="cellidToENBConverterResult.net == 'NR'">gNB ID (hex)</ng-container>
                     <ng-container *ngIf="cellidToENBConverterResult.net == 'LTE'">eNB ID (hex)</ng-container>
                     <ng-container *ngIf="cellidToENBConverterResult.net == 'UMTS'">NB ID (hex)</ng-container>
                     <ng-container *ngIf="cellidToENBConverterResult.net == 'GSM'">BTS ID (hex)</ng-container>
@@ -63,7 +82,7 @@
                     {{cellidToENBConverterResult.siteidhex}}
                 </td>
             </tr>
-            <tr *ngIf="cellidToENBConverterResult.sectorid != null && cellidToENBConverterResult.net == 'LTE'">
+            <tr *ngIf="cellidToENBConverterResult.sectorid != null && (cellidToENBConverterResult.net == 'LTE' || 'NR')">
                 <th class="mat-header-cell">
                     Sector ID
                 </th>
@@ -71,7 +90,7 @@
                     {{cellidToENBConverterResult.sectorid}}
                 </td>
             </tr>
-            <tr *ngIf="cellidToENBConverterResult.sectoridhex != null && cellidToENBConverterResult.net == 'LTE'">
+            <tr *ngIf="cellidToENBConverterResult.sectoridhex != null && (cellidToENBConverterResult.net == 'LTE' || 'NR')">
                 <th class="mat-header-cell">
                     Sector ID (Hex)
                 </th>
