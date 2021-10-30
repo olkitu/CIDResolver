@@ -82,7 +82,7 @@
                     {{cellidToENBConverterResult.siteidhex}}
                 </td>
             </tr>
-            <tr *ngIf="cellidToENBConverterResult.sectorid != null && cellidToENBConverterResult.net == 'LTE' || 'NR'">
+            <tr *ngIf="cellidToENBConverterResult.sectorid != null && (cellidToENBConverterResult.net == 'LTE' || 'NR')">
                 <th class="mat-header-cell">
                     Sector ID
                 </th>
@@ -90,7 +90,7 @@
                     {{cellidToENBConverterResult.sectorid}}
                 </td>
             </tr>
-            <tr *ngIf="cellidToENBConverterResult.sectoridhex != null && cellidToENBConverterResult.net == 'LTE' || 'NR'">
+            <tr *ngIf="cellidToENBConverterResult.sectoridhex != null && (cellidToENBConverterResult.net == 'LTE' || 'NR')">
                 <th class="mat-header-cell">
                     Sector ID (Hex)
                 </th>
