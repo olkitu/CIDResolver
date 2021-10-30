@@ -51,9 +51,11 @@ export class AppComponent {
 
     if(this.formData.net == 'NR') {
       clen = (Math.pow(2, Number(this.formData.nr_gnbid_length)) -1) * Math.pow(2, 36 - Number(this.formData.nr_gnbid_length))
-      siteid = (clen & cell_id) >> (36 - Number(this.formData.nr_gnbid_length));
+      siteid = Math.trunc(cell_id / Math.pow(2, 36 - Number(this.formData.nr_gnbid_length)))
       sectorid = ~clen & cell_id;
       sectoridhex = sectorid.toString(16);
+
+      console.log(cell_id & clen)
     }
     
     if(this.formData.net == 'LTE') {
