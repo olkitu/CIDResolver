@@ -50,9 +50,9 @@ export class AppComponent {
     let clen = undefined;
 
     if(this.formData.net == 'NR') {
-      clen = 36 - Number(this.formData.nr_gnbid_length);
-      siteid = cell_id >> clen;
-      sectorid = cell_id & (cell_id & (1 << clen)) - 1;
+      clen = (Math.pow(2, Number(this.formData.nr_gnbid_length)) -1) * Math.pow(2, 36 - Number(this.formData.nr_gnbid_length))
+      siteid = (clen & cell_id) >> (36 - Number(this.formData.nr_gnbid_length));
+      sectorid = ~clen & cell_id;
       sectoridhex = sectorid.toString(16);
     }
     
