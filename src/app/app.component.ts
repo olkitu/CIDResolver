@@ -52,7 +52,7 @@ export class AppComponent {
     if(this.formData.net == 'NR') {
       clen = 36 - Number(this.formData.nr_gnbid_length);
       siteid = cell_id >> clen;
-      sectorid = cell_id - (siteid << clen);
+      sectorid = cell_id & (cell_id & (1 << clen)) - 1;
       sectoridhex = sectorid.toString(16);
     }
     
