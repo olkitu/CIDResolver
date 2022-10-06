@@ -6,7 +6,7 @@ RUN yarn
 COPY . .
 RUN ./node_modules/@angular/cli/bin/ng build --configuration production
 
-FROM nginx:stable-alpine
+FROM nginx:1-alpine
 WORKDIR /var/www/html
 COPY --from=build /usr/src/app/dist/cidresolver ./dist/cidresolver
 COPY nginx.conf /etc/nginx/nginx.conf
