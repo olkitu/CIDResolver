@@ -2,11 +2,25 @@ table {
     width: 100%;
 }
 
-th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+th.mat-header-cell, td.mat-cell {
     padding: 0;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     height: 56px;
+}
+
+th.mat-header-cell {
+    font-weight: 300;
+}
+
+th.mat-header-cell, td.mat-cell {
+    font-size: 14px;
+    flex: none;
+    min-width: 100%;
+}
+
+.mat-hint {
+    font-size: 12px;
 }
 
 .radio-button {
@@ -22,3 +36,4 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 .spacer {
     flex: 1 1 auto;
 }
+

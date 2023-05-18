@@ -7,12 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import {MatToolbarModule} from '@angular/material/toolbar'; 
-import { MatButtonModule} from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -29,11 +28,10 @@ import { environment } from '../environments/environment'
     ReactiveFormsModule,
     FormsModule,
     MatToolbarModule,
-    MatButtonModule,
-    MatInputModule,
-    MatSelectModule,
-    MatRadioModule,
     MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatTableModule,
     MatIconModule,
     HttpClientModule,
     FontAwesomeModule,
