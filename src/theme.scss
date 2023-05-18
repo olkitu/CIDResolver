@@ -32,7 +32,7 @@ $light-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($light-theme);
 
-// Apply the light theme only when the user prefers light themes.
+// Apply the light theme only when the user prefers dark themes.
 @media (prefers-color-scheme: dark) {
   // Use the `-color` mixins to only apply color styles without reapplying the same
   // typography and density styles.

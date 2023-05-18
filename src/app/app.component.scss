@@ -15,6 +15,12 @@ th.mat-header-cell {
 
 th.mat-header-cell, td.mat-cell {
     font-size: 14px;
+    flex: none;
+    min-width: 100%;
+}
+
+.mat-hint {
+    font-size: 12px;
 }
 
 .radio-button {
