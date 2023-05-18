@@ -8,11 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import {MatToolbarModule} from '@angular/material/toolbar'; 
-import { MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
-import { MatLegacyRadioModule as MatRadioModule } from '@angular/material/legacy-radio';
+import { MatInputModule } from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -29,11 +28,10 @@ import { environment } from '../environments/environment'
     ReactiveFormsModule,
     FormsModule,
     MatToolbarModule,
-    MatButtonModule,
-    MatInputModule,
-    MatSelectModule,
-    MatRadioModule,
     MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatTableModule,
     MatIconModule,
     HttpClientModule,
     FontAwesomeModule,
