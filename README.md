@@ -2,7 +2,7 @@
 
 Convert Cell ID to BTS/NB/eNB ID. 
 
-Build with Angular 12 and Material Theme
+Build with Angular 17 and Material Theme
 
 ## Development
 
