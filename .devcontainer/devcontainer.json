@@ -3,7 +3,9 @@
         "dockerfile": "Dockerfile"
     },
     "features": {
-        "ghcr.io/devcontainers/features/node:1.7.1": {},
+        "ghcr.io/devcontainers/features/node:1.7.1": {
+            "version": "18"
+        },
         "ghcr.io/devcontainers-extra/features/angular-cli:2.0.16": {}
     },
     "postCreateCommand": "yarn",
